@@ -1,0 +1,132 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Answer {
+  choices: [Choice!]!
+  createdAt: DateTime
+  deletedAt: DateTime
+  id: Int
+  questionnaire: Questionnaire!
+  questions: [Question!]!
+  updatedAt: DateTime
+}
+
+type Choice {
+  answers: Answer
+  choiceNumber: Int!
+  content: String!
+  createdAt: DateTime
+  deletedAt: DateTime
+  id: Int
+  question: Question
+  score: Int!
+  updatedAt: DateTime
+}
+
+input CreateAnswerInput {
+  choices: [CreateChoiceInput!]!
+  id: Int
+  questionnaire: CreateQuestionnaireInput!
+  questions: [CreateQuestionInput!]!
+}
+
+input CreateChoiceInput {
+  choiceNumber: Int!
+  content: String!
+  id: Int
+  score: Int!
+}
+
+input CreateQuestionInput {
+  choices: [CreateChoiceInput!]
+  content: String!
+  id: Int
+  questionNumber: Int!
+}
+
+input CreateQuestionnaireInput {
+  id: Int
+  questions: [CreateQuestionInput!]
+  title: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Mutation {
+  createAnswer(createAnswerInput: CreateAnswerInput!): Answer!
+  createChoice(createChoiceInput: CreateChoiceInput!): Choice!
+  createQuestion(createQuestionInput: CreateQuestionInput!): Question!
+  createQuestionnaire(CreateQuestionnaireInput: CreateQuestionnaireInput!): Questionnaire!
+  softDeleteAnswer(answerId: Int!): String!
+  softDeleteChoice(choiceId: Int!): String!
+  softDeleteQuestion(questionQuestionId: Int!): String!
+  softDeleteQuestionnaire(questionnaireId: Int!): String!
+  updateAnswer(updateAnswerInput: UpdateAnswerInput!): Answer!
+  updateChoice(updateChoiceInput: UpdateChoiceInput!): Choice!
+  updateQuestion(updateQuestionInput: UpdateQuestionInput!): Question!
+  updateQuestionnaire(updateQuestionnaireInput: UpdateQuestionnaireInput!): Questionnaire!
+}
+
+type Query {
+  fetchAnswer(answerId: Int!): Answer!
+  fetchAnswers: [Answer!]!
+  fetchChoice(choiceId: Int!): Choice!
+  fetchChoices: [Choice!]!
+  fetchQuestion(questionId: Int!): Question!
+  fetchQuestionnaire(questionnaireId: Int!): Questionnaire!
+  fetchQuestionnaires: [Questionnaire!]!
+  fetchQuestions: [Question!]!
+  getAnswerTotalScore(answerId: Int!): Int!
+}
+
+type Question {
+  answers: [Answer!]
+  choices: [Choice!]
+  content: String!
+  createdAt: DateTime
+  deletedAt: DateTime
+  id: Int
+  questionNumber: Int!
+  questionnaire: Questionnaire
+  updatedAt: DateTime
+}
+
+type Questionnaire {
+  createdAt: DateTime
+  deletedAt: DateTime
+  id: Int
+  questions: [Question!]
+  title: String!
+  updatedAt: DateTime
+}
+
+input UpdateAnswerInput {
+  choices: [CreateChoiceInput!]
+  id: Int
+  questionnaire: CreateQuestionnaireInput
+  questions: [CreateQuestionInput!]
+}
+
+input UpdateChoiceInput {
+  choiceNumber: Int
+  content: String
+  id: Int
+  score: Int
+}
+
+input UpdateQuestionInput {
+  choices: [CreateChoiceInput!]
+  content: String
+  id: Int
+  questionNumber: Int
+}
+
+input UpdateQuestionnaireInput {
+  id: Int
+  questions: [CreateQuestionInput!]
+  title: String
+}
