@@ -11,7 +11,7 @@ $ touch .env
 2. `.env`파일에 아래 내용 붙혀넣기
 
 ```bash
-# .env 
+# .env
 DB_TYPE=postgres
 DB_HOST=maumlab-db.cdsp1srklmtj.ap-northeast-2.rds.amazonaws.com
 DB_PORT=5432
@@ -28,13 +28,13 @@ PORT_NUMBER=4000
 3. 종속성 설치
 
 ```bash
-$ yarn
+$ npx yarn install
 ```
 
 4. 서버 실행
 
 ```bash
-$ yarn start:dev
+$ npx yarn start:dev
 ```
 
 5. 서버 정상 접속 확인
@@ -43,7 +43,7 @@ $ yarn start:dev
 http://localhost:4000/graphql
 ```
 
-​    
+​
 
 ---
 
@@ -51,7 +51,7 @@ http://localhost:4000/graphql
 
 ![image-20231205002725896](README.assets/image-20231205002725896.png)
 
-​    
+​
 
 ---
 
@@ -75,19 +75,16 @@ http://localhost:4000/graphql
    - 단일 조회 : fetchChoice
    - 수정 : updateChoice
    - 논리 삭제 : softDeleteChoice
-4. 답변 (Answer) 
+4. 답변 (Answer)
    - 생성 - 설문지 완료 : createAnswer
    - 전체 조회 : fetchAnswers
-   - 단일 조회 - 완료된 설문지 확인 :  fetchAnswer
+   - 단일 조회 - 완료된 설문지 확인 : fetchAnswer
    - 수정 : updateAnswer
    - 논리 삭제 : softDeleteAnswer
    - 답변 총점 조회 : getAnswerTotalScore
-
-
 
 ## 설치 패키지
 
 1. `@nestjs/config`
 2. `@nestjs/graphql @nestjs/apollo @apollo/server graphql`
 3. `typeorm @nestjs/typeorm pg`
-
